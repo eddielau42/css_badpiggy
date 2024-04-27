@@ -29,6 +29,7 @@ body {
 .main {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -79,6 +80,8 @@ body {
       border-bottom: none;
       border-radius: 75px;
       background-color: var(--piggy-light-color);
+      visibility: visible;
+      opacity: 1;
       &::before,
       &::after {
         content: '';
@@ -317,8 +320,8 @@ body {
         --rotate-deg: 25deg;
       }
       &::after {
-        --pos-x: 84px;
-        --pos-y: -14px;
+        --pos-x: 81px;
+        --pos-y: -21px;
         --bd-left-size: 5px;
         --bd-right-size: 8px;
         --bd-bottom-size: 15px;
@@ -381,4 +384,120 @@ body {
 @keyframes winkEyesHole {
   0%, 100% { opacity: 0; }
   15%, 95% { opacity: 1; }
+}
+
+/* Switcher */
+.switcher {
+  box-sizing: border-box;
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 243px;
+  height: 86px;
+  background-color: #f8b74c;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 32px;
+  font-weight: 700;
+  box-shadow: 6px 4px #e59513;
+  cursor: pointer;
+  transition: all .2s;
+  
+  .inner {
+    box-sizing: border-box;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 215px;
+    height: 76px;
+    background-color: #e7940c;
+    box-shadow: 6px 4px #e5a946;
+    transform: rotate(-3deg);
+    transition: all .2s;
+    &::before {
+      content: 'to pixel';
+    }
+  }
+
+  &:hover {
+    transform: rotate(-3deg);
+    .inner {
+      transform: rotate(7deg);
+    }
+  }
+}
+
+/* With pixel style */
+.pixel {
+  * { border-radius: 0 !important; }
+  .piggy {
+    /* shadow */
+    &::after {
+      border-radius: 0;
+    }
+
+    .ears {
+      .ear {
+        &::before, &::after {
+          visibility: hidden;
+          opacity: 0;
+        }
+        &.left {
+          transform: rotate(0deg) translate(0, -40px);
+        }
+        &.right {
+          transform: rotate(0deg) translate(0, -23px);
+        }
+      }
+    }
+
+    .eyes {
+      .eyebrows {
+        &::before, &::after { border-radius: 0; }
+      }
+      .eyeball {
+        &::before { border-radius: 0; }
+      }
+    }
+
+    .nose {
+      &::before, &::after { border-radius: 0; }
+    }
+
+    .mouth {
+      transform: rotate(0deg);
+      .teeth {
+        --rotate-deg: 0deg;
+        border-radius: 0;
+        &::before, &::after {
+          --rotate-deg: 0deg;
+          border-radius: 0;
+        }
+        &::before { --pos-y: -21px; }
+        &::after { --pos-x: 74px; }
+      }
+    }
+
+    .freckles {
+      transform: rotate(0deg);
+      &::before, &::after { border-radius: 0; }
+      &.left {
+        &::before { top: -2px; }
+      }
+      &.right {
+        &::after { top: 28px; }
+      }
+    }
+  }
+
+  .switcher {
+    .inner {
+      &::before {
+        content: 'to normal';
+      }
+    }
+  }
 }
