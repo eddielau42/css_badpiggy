@@ -390,8 +390,8 @@ body {
 .switcher {
   box-sizing: border-box;
   position: absolute;
-  top: 15%;
-  left: 15%;
+  top: 5%;
+  left: 5%;
   width: 243px;
   height: 86px;
   background-color: #f8b74c;
