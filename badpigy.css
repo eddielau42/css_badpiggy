@@ -38,6 +38,9 @@ body {
   min-height: 100vh;
 }
 
+.hidden {display: none;}
+.unvisible {visibility: hidden; opacity: 0;}
+
 .piggy {
   position: relative;
   z-index: 10;
@@ -232,6 +235,7 @@ body {
     border-radius: 50%;
     z-index: 6;
     background-color: var(--piggy-nose-color);
+    cursor: pointer;
     &::before {
       content: '';
       position: absolute;
@@ -500,4 +504,17 @@ body {
       }
     }
   }
+}
+
+/* Oink */
+.oink {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  /* visibility: visible;
+  opacity: 1; */
+  visibility: hidden;
+  opacity: 0;
 }
